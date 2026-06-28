@@ -4,6 +4,10 @@ Compact public web preview of Language Miner.
 
 This repository is prepared for GitHub Pages. It contains the browser/Vite app source and the static Diamond Bistro cartridge demo. Private development notes, backlog docs, Electron desktop code, QA logs, extension code, test fixtures, and local backup data are intentionally excluded.
 
+## Live Preview
+
+GitHub Pages: https://meowthologysaga.github.io/Language_Miner_test/
+
 ## Run Locally
 
 ```bash
