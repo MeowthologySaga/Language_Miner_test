@@ -1,0 +1,275 @@
+/* PDF Hub and Today Hub surfaces. */
+
+.pdf-hub-page {
+  display: grid;
+  place-items: center;
+}
+
+.pdf-hub-shell {
+  display: grid;
+  width: min(1120px, 100%);
+  gap: 16px;
+  padding: 0;
+}
+
+.today-hub-panel {
+  display: grid;
+  gap: 12px;
+  overflow: hidden;
+  border: 1px solid #cbd8e8;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  padding: 16px;
+  box-shadow: 0 14px 28px rgb(15 23 42 / 7%);
+}
+
+.today-hub-command-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.today-hub-heading {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.today-hub-eyebrow {
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.today-hub-heading h2 {
+  margin: 0;
+  color: #172033;
+  font-size: 24px;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.today-hub-heading p {
+  margin: 0;
+  color: #526174;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.today-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.today-hub-card {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  min-width: 0;
+  border: 1px solid #dbe4ee;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 12px;
+  box-shadow: 0 8px 18px rgb(15 23 42 / 5%);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.today-hub-card:hover {
+  border-color: #b8c7d7;
+  box-shadow: 0 12px 24px rgb(15 23 42 / 8%);
+  transform: translateY(-1px);
+}
+
+.today-hub-card:focus-visible {
+  outline: 3px solid rgb(37 99 235 / 20%);
+  outline-offset: 2px;
+}
+
+.today-hub-card.review {
+  border-color: #d8e6dc;
+}
+
+.today-hub-card.life {
+  border-color: #d7e2f6;
+}
+
+.today-hub-card.listening {
+  border-color: #c9e7ef;
+}
+
+.today-hub-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.today-hub-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  color: #43b566;
+}
+
+.today-hub-card.review .today-hub-card-icon {
+  color: #43b566;
+}
+
+.today-hub-card.life .today-hub-card-icon {
+  color: #2563eb;
+}
+
+.today-hub-card.listening .today-hub-card-icon {
+  color: #0e7490;
+}
+
+.today-hub-card-title strong {
+  overflow: hidden;
+  color: #172033;
+  font-size: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.today-hub-card-body {
+  display: grid;
+  grid-template-columns: 66px minmax(78px, auto) minmax(118px, 1fr);
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.today-hub-ring {
+  display: inline-grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 999px;
+}
+
+.today-hub-ring > span {
+  display: block;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: inset 0 0 0 1px #edf2f7;
+}
+
+.today-hub-card-metric {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.today-hub-card-metric strong {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  color: #172033;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.today-hub-card-metric strong span {
+  color: #172033;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.today-hub-card-metric small {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.today-hub-mini-chart {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-items: end;
+  gap: 5px;
+  min-width: 0;
+  min-height: 64px;
+  border-left: 1px solid #e2e8f0;
+  padding-left: 12px;
+}
+
+.today-hub-mini-bar {
+  display: grid;
+  align-items: end;
+  justify-items: center;
+  gap: 5px;
+  min-width: 0;
+  height: 64px;
+}
+
+.today-hub-mini-bar i {
+  display: block;
+  width: 8px;
+  border-radius: 2px 2px 0 0;
+  background: #b7dfc4;
+}
+
+.today-hub-card.life .today-hub-mini-bar i {
+  background: #bdd1f8;
+}
+
+.today-hub-card.listening .today-hub-mini-bar i {
+  background: #aee2ed;
+}
+
+.today-hub-mini-bar.today i {
+  background: #43b566;
+}
+
+.today-hub-card.life .today-hub-mini-bar.today i {
+  background: #2563eb;
+}
+
+.today-hub-card.listening .today-hub-mini-bar.today i {
+  background: #0891b2;
+}
+
+.today-hub-mini-bar small {
+  overflow: hidden;
+  max-width: 100%;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pdf-hub-title {
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  text-align: center;
+}
+
+.pdf-hub-title p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.maker-choice {
+  border-color: #cdebd8;
+}
+
+.maker-choice .mode-card-icon {
+  background: #e8f8ee;
+  color: #25a85a;
+}
+
+.maker-choice h3 {
+  color: #16813f;
+}

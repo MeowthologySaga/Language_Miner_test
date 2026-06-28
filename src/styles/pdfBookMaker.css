@@ -1,0 +1,500 @@
+/* Book Maker workflow and maker page surfaces. */
+
+.maker-wizard-page {
+  display: grid;
+  gap: 14px;
+}
+
+.maker-wizard-shell {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+}
+
+.maker-step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  border: 1px solid #dbe4ee;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 13px;
+}
+
+.maker-step.active:first-child {
+  border-color: #bfdbfe;
+  background: #eaf2ff;
+  color: #0f4fb6;
+}
+
+.maker-step-index {
+  display: inline-grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border-radius: 999px;
+  background: #1769e0;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.maker-option-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.maker-option-strip section {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fbfdff;
+  padding: 10px;
+}
+
+.maker-option-strip span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.maker-option-strip strong {
+  overflow: hidden;
+  color: #172033;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.maker-workspace-shell {
+  overflow: hidden;
+}
+
+.pdf-panel-maker .pdf-job-summary {
+  display: none;
+}
+
+.pdf-maker-simple {
+  display: grid;
+  min-height: 620px;
+  background: #ffffff;
+}
+
+.pdf-maker-start,
+.pdf-maker-ready,
+.pdf-maker-recovery,
+.pdf-maker-done {
+  display: grid;
+  width: min(760px, 100%);
+  justify-self: center;
+  align-content: center;
+  gap: 16px;
+  padding: 42px 24px;
+}
+
+.pdf-maker-dropzone {
+  position: relative;
+  display: grid;
+  min-height: 310px;
+  place-items: center;
+  align-content: center;
+  gap: 13px;
+  overflow: hidden;
+  border: 2px dashed #a8c7ef;
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgb(23 105 224 / 5%) 1px, transparent 1px),
+    linear-gradient(180deg, rgb(23 105 224 / 5%) 1px, transparent 1px),
+    #f7fbff;
+  background-size: 28px 28px;
+  color: #64748b;
+  cursor: pointer;
+  text-align: center;
+}
+
+.pdf-maker-dropzone > svg {
+  color: #1769e0;
+}
+
+.pdf-maker-dropzone strong {
+  color: #172033;
+  font-size: 28px;
+  letter-spacing: 0;
+}
+
+.pdf-maker-dropzone input,
+.pdf-maker-selected-file label input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.pdf-maker-dropzone .button {
+  pointer-events: none;
+}
+
+.pdf-maker-chip-row,
+.pdf-maker-progress-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pdf-maker-chip-row span,
+.pdf-maker-progress-stats span {
+  min-height: 30px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #f8fafc;
+  color: #475569;
+  padding: 7px 11px;
+  font-size: 13px;
+}
+
+.pdf-maker-advanced {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fbfdff;
+}
+
+.pdf-maker-advanced summary {
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0 14px;
+  color: #475569;
+  font-weight: 800;
+}
+
+.pdf-maker-advanced summary::after {
+  content: "⌄";
+}
+
+.pdf-maker-advanced[open] summary::after {
+  content: "⌃";
+}
+
+.pdf-maker-advanced-grid {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.8fr) minmax(260px, 1.1fr) minmax(170px, 0.7fr);
+  gap: 12px;
+  border-top: 1px solid var(--border);
+  padding: 14px;
+}
+
+.pdf-maker-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 58px;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.pdf-maker-toggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: #1769e0;
+}
+
+.pdf-maker-selected-file {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid #dbe4ee;
+  border-radius: 8px;
+  background: #fbfdff;
+  padding: 18px;
+}
+
+.pdf-maker-selected-file > svg {
+  color: #1769e0;
+}
+
+.pdf-maker-selected-file div {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+}
+
+.pdf-maker-selected-file span,
+.pdf-maker-selected-file small,
+.pdf-maker-help {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.pdf-maker-selected-file strong {
+  overflow: hidden;
+  color: #172033;
+  font-size: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pdf-maker-selected-file label {
+  position: relative;
+  overflow: hidden;
+}
+
+.pdf-maker-usage-card {
+  display: grid;
+  gap: 14px;
+  border: 1px solid #cfe1f7;
+  border-radius: 8px;
+  background: #fbfdff;
+  padding: 16px;
+}
+
+.pdf-maker-usage-header,
+.pdf-maker-status-dock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.pdf-maker-usage-header > div,
+.pdf-maker-status-dock > div {
+  display: grid;
+  gap: 4px;
+}
+
+.pdf-maker-usage-header span,
+.pdf-maker-status-dock span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.pdf-maker-usage-header strong {
+  color: #172033;
+  font-size: 26px;
+}
+
+.pdf-maker-usage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.pdf-maker-usage-grid > div {
+  display: grid;
+  gap: 4px;
+  border: 1px solid #dbe4ee;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 10px;
+}
+
+.pdf-maker-usage-grid span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.pdf-maker-usage-grid strong {
+  color: #172033;
+  font-size: 14px;
+}
+
+.pdf-maker-status-dock {
+  position: sticky;
+  bottom: 14px;
+  z-index: 4;
+  border: 1px solid #cfe1f7;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 96%);
+  box-shadow: 0 16px 28px rgb(15 23 42 / 12%);
+  padding: 12px;
+}
+
+.pdf-maker-main-action {
+  min-height: 58px;
+  font-size: 18px;
+}
+
+.pdf-maker-help {
+  margin: -4px 0 0;
+  text-align: center;
+}
+
+.pdf-maker-recovery {
+  align-content: center;
+}
+
+.pdf-maker-recovery .pdf-maker-selected-file > svg {
+  color: #d97706;
+}
+
+.pdf-maker-failure-list {
+  display: grid;
+  gap: 8px;
+  border: 1px solid #fed7aa;
+  border-radius: 8px;
+  background: #fff7ed;
+  padding: 12px;
+}
+
+.pdf-maker-failure-list div {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+}
+
+.pdf-maker-failure-list strong {
+  color: #9a3412;
+  font-size: 13px;
+}
+
+.pdf-maker-failure-list span {
+  overflow: hidden;
+  color: #7c2d12;
+  font-size: 13px;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pdf-maker-progress-panel {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  background: #ffffff;
+  padding: 42px;
+}
+
+.pdf-maker-file-strip {
+  display: grid;
+  gap: 8px;
+  border: 1px solid #dbe4ee;
+  border-radius: 8px;
+  background: #fbfdff;
+  padding: 18px;
+}
+
+.pdf-maker-file-strip svg {
+  color: #1769e0;
+}
+
+.pdf-maker-file-strip div {
+  display: grid;
+  gap: 5px;
+}
+
+.pdf-maker-file-strip strong {
+  overflow: hidden;
+  color: #172033;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pdf-maker-file-strip span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.pdf-maker-progress-center {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.pdf-maker-progress-ring {
+  display: grid;
+  width: 154px;
+  height: 154px;
+  place-items: center;
+  border-radius: 999px;
+  background:
+    radial-gradient(#fff 57%, transparent 58%),
+    conic-gradient(#20a354 0 var(--maker-progress), #dbe4ee var(--maker-progress) 100%);
+  color: #172033;
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.pdf-maker-progress-center h3,
+.pdf-maker-done h3 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 0;
+}
+
+.pdf-maker-progress-center p,
+.pdf-maker-done p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.pdf-maker-progress-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.pdf-maker-progress-header h3 {
+  margin: 0 0 5px;
+  font-size: 17px;
+  letter-spacing: 0;
+}
+
+.pdf-maker-progress-header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.pdf-maker-progress-header strong {
+  color: #1769e0;
+  font-size: 22px;
+}
+
+.pdf-maker-progress-stats {
+  gap: 8px;
+}
+
+.pdf-maker-progress-stats .failed {
+  border-color: #fecaca;
+  background: #fff1f2;
+  color: #be123c;
+}
+
+.pdf-maker-done {
+  justify-items: center;
+  text-align: center;
+}
+
+.pdf-maker-done-icon {
+  display: grid;
+  width: 82px;
+  height: 82px;
+  place-items: center;
+  border-radius: 999px;
+  background: #e8f8ee;
+  color: #20a354;
+  font-size: 42px;
+  font-weight: 900;
+}
+
+.pdf-maker-done-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}

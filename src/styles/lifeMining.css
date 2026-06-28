@@ -1,0 +1,688 @@
+/* Life Mining candidate list, detail panel, manual entry, and cost modal. */
+
+.life-layout {
+  grid-template-columns: minmax(640px, 0.92fr) minmax(340px, 0.68fr);
+  align-items: start;
+  height: calc(100vh - 64px);
+  height: calc(100dvh - 64px);
+  overflow: hidden;
+}
+
+.life-candidate-panel .life-log-list {
+  align-content: start;
+  flex: 1 1 auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: max-content;
+  gap: 12px;
+  min-height: 0;
+  border: 1px solid #e7dac7;
+  border-radius: 10px;
+  background: #f8f3ea;
+  overflow: auto;
+  padding: 10px;
+  scrollbar-color: #8fa9d6 transparent;
+  scrollbar-width: thin;
+}
+
+.life-candidate-panel .life-log-list::-webkit-scrollbar,
+.life-layout .detail-panel::-webkit-scrollbar {
+  width: 13px;
+  height: 13px;
+  background: transparent;
+}
+
+.life-candidate-panel .life-log-list::-webkit-scrollbar-button,
+.life-layout .detail-panel::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.life-candidate-panel .life-log-list::-webkit-scrollbar-track,
+.life-layout .detail-panel::-webkit-scrollbar-track {
+  margin: 10px 3px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 999px;
+  background: rgba(241, 245, 249, 0.62);
+}
+
+.life-candidate-panel .life-log-list::-webkit-scrollbar-thumb,
+.life-layout .detail-panel::-webkit-scrollbar-thumb {
+  min-height: 52px;
+  border: 4px solid transparent;
+  border-radius: 999px;
+  background-color: #8fa9d6;
+  background-clip: content-box;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.42);
+}
+
+.life-candidate-panel .life-log-list::-webkit-scrollbar-thumb:hover,
+.life-layout .detail-panel::-webkit-scrollbar-thumb:hover {
+  background-color: #5d82c3;
+}
+
+.life-candidate-panel .life-log-list::-webkit-scrollbar-corner,
+.life-layout .detail-panel::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.life-candidate-panel .life-log-list > .empty-state {
+  grid-column: 1 / -1;
+}
+
+.life-candidate-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.life-candidate-toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.life-candidate-toolbar .panel-heading {
+  flex-wrap: wrap;
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+.life-candidate-toolbar .button {
+  flex: 0 0 auto;
+}
+
+.life-candidate-actions,
+.life-selection-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.life-selection-toolbar {
+  justify-content: flex-start;
+  margin-bottom: 12px;
+  border: 1px solid #cbd8e8;
+  border-radius: 8px;
+  background: #f8fbff;
+  padding: 9px;
+}
+
+.life-selection-toolbar strong {
+  margin-right: auto;
+  color: #172033;
+  font-size: 13px;
+}
+
+.life-status-text {
+  margin: 0 0 10px;
+}
+
+.life-layout .detail-panel {
+  position: sticky;
+  top: 16px;
+  min-width: 0;
+  max-height: calc(100vh - 96px);
+  max-height: calc(100dvh - 96px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: #8fa9d6 transparent;
+  scrollbar-width: thin;
+}
+
+.life-auto-status {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #d8e3f0;
+  border-radius: 8px;
+  background: #f8fbff;
+  color: #172033;
+  padding: 11px 12px;
+}
+
+.life-auto-status > div,
+.life-log-detail-meta,
+.life-log-detail-meta span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.life-auto-status strong {
+  font-size: 13px;
+}
+
+.life-auto-status span,
+.life-auto-status small {
+  color: #526174;
+  font-size: 12px;
+}
+
+.life-log-item {
+  position: relative;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+  border-color: #d6e1ed;
+  background: #ffffff;
+  color: #172033;
+  box-shadow: 0 2px 5px rgb(15 23 42 / 5%);
+  overflow: hidden;
+  transition:
+    border-color 0.16s ease,
+    background-color 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.life-log-item::before {
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  left: 0;
+  width: 3px;
+  border-radius: 0 999px 999px 0;
+  background: #dbeafe;
+  content: "";
+}
+
+.life-log-item:hover {
+  border-color: #93c5fd;
+  background: #f8fbff;
+  box-shadow: 0 7px 18px rgb(15 23 42 / 8%);
+}
+
+.life-log-item.selected {
+  border-color: #2563eb;
+  background: #eff6ff;
+  box-shadow:
+    inset 0 0 0 1px #2563eb,
+    0 8px 20px rgb(37 99 235 / 12%);
+}
+
+.life-log-item.selected::before {
+  top: 10px;
+  bottom: 10px;
+  background: #2563eb;
+}
+
+.life-log-item.selection-mode:hover {
+  border-color: #93c5fd;
+  background: #eff6ff;
+}
+
+.life-log-item.bulk-selected {
+  border-color: #2563eb;
+  background: #eff6ff;
+  box-shadow:
+    inset 0 0 0 1px #2563eb,
+    0 8px 20px rgb(37 99 235 / 12%);
+}
+
+.life-log-item.bulk-selected::before {
+  background: #2563eb;
+}
+
+.life-log-select {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  gap: 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+
+.life-log-select.selection-mode {
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+}
+
+.life-log-body {
+  display: grid;
+  min-width: 0;
+  gap: 9px;
+}
+
+.life-log-check {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1769e0;
+  margin-top: 1px;
+}
+
+.life-log-check.checked {
+  border-color: #1769e0;
+  background: #1769e0;
+  color: #ffffff;
+}
+
+.life-log-text {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #172033;
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.life-log-message-preview {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f8fbff;
+  padding: 8px;
+}
+
+.life-log-preview-row {
+  display: grid;
+  justify-items: start;
+  gap: 2px;
+  max-width: 88%;
+  min-width: 0;
+}
+
+.life-log-preview-row.is-me {
+  justify-self: end;
+  justify-items: end;
+}
+
+.life-log-preview-row.is-target {
+  max-width: 94%;
+}
+
+.life-log-preview-speaker {
+  max-width: 100%;
+  overflow: hidden;
+  color: #64748b;
+  font-size: 10.5px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.life-log-preview-bubble {
+  display: -webkit-box;
+  overflow: hidden;
+  max-width: 100%;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #334155;
+  padding: 6px 8px;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.3;
+  word-break: break-word;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.life-log-preview-row.is-other .life-log-preview-bubble {
+  border-top-left-radius: 4px;
+  background: #f1f5f9;
+}
+
+.life-log-preview-row.is-me .life-log-preview-bubble {
+  border-top-right-radius: 4px;
+  border-color: #bfdbfe;
+  background: #dbeafe;
+  color: #1e3a8a;
+}
+
+.life-log-preview-row.is-target .life-log-preview-speaker {
+  color: #1d4ed8;
+}
+
+.life-log-preview-row.is-target .life-log-preview-bubble {
+  border-color: #60a5fa;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 850;
+  box-shadow: 0 5px 12px rgb(37 99 235 / 16%);
+}
+
+.life-log-source-line {
+  display: block;
+  overflow: hidden;
+  max-width: 100%;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.life-card-action {
+  align-self: start;
+  justify-self: stretch;
+  min-width: 0;
+  margin-top: 2px;
+  border-color: #16a34a !important;
+  background: #22c55e !important;
+  color: #ffffff !important;
+  font-weight: 850;
+  box-shadow: 0 7px 16px rgb(34 197 94 / 16%);
+}
+
+.life-card-action:hover {
+  border-color: #15803d !important;
+  background: #16a34a !important;
+}
+
+.life-candidate-panel .life-card-action-row {
+  align-items: stretch;
+  gap: 7px;
+}
+
+.life-log-detail {
+  display: grid;
+  gap: 12px;
+}
+
+.life-log-conversation-preview {
+  display: grid;
+  gap: 12px;
+}
+
+.life-log-detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.life-log-detail-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 26px;
+  border: 1px solid #d8e3f0;
+  border-radius: 999px;
+  background: #f8fbff;
+  color: #526174;
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.life-log-detail-meta span.processed {
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+  color: #166534;
+}
+
+.life-log-chat-thread {
+  border: 1px solid #d8e3f0;
+  border-radius: 8px;
+  background: #fbfdff;
+  padding: 12px;
+}
+
+.life-log-chat-thread .life-chat-bubble {
+  max-width: min(86%, 760px);
+}
+
+.life-log-source-card {
+  display: grid;
+  gap: 5px;
+  border: 1px solid #d8e3f0;
+  border-radius: 8px;
+  background: #f8fbff;
+  padding: 10px 12px;
+}
+
+.life-log-source-card small {
+  color: #526174;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.life-log-source-card p {
+  overflow: hidden;
+  margin: 0;
+  color: #172033;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.life-log-detail-block {
+  display: grid;
+  gap: 6px;
+  border: 1px solid #d8e3f0;
+  border-radius: 8px;
+  background: #f8fbff;
+  padding: 12px;
+}
+
+.life-log-detail-block small {
+  color: #526174;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.life-log-detail-block p {
+  margin: 0;
+  color: #172033;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.life-cost-modal-backdrop {
+  position: fixed;
+  z-index: 80;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgb(15 23 42 / 30%);
+  padding: 18px;
+}
+
+.life-cost-modal {
+  display: grid;
+  gap: 13px;
+  width: min(500px, 100%);
+  max-height: calc(100vh - 36px);
+  overflow: auto;
+  border: 1px solid #cbd8e8;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #172033;
+  padding: 18px;
+  box-shadow: 0 24px 70px rgb(15 23 42 / 24%);
+}
+
+.life-manual-modal {
+  width: min(560px, 100%);
+}
+
+.life-manual-form {
+  display: grid;
+  gap: 11px;
+}
+
+.life-manual-form .text-input.tall {
+  min-height: 150px;
+}
+
+.life-manual-actions {
+  justify-content: flex-end;
+}
+
+.life-manual-actions .button {
+  flex: 0 1 auto;
+  min-width: 120px;
+}
+
+.life-cost-modal-heading,
+.life-cost-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.life-cost-modal-heading span,
+.life-cost-grid span,
+.life-cost-preview span {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.life-cost-modal-heading h2 {
+  margin: 2px 0 0;
+  color: #111827;
+  font-size: 21px;
+}
+
+.life-cost-summary {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 11px;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  background: #f0fdf4;
+  padding: 12px;
+}
+
+.life-cost-summary > svg {
+  color: #16a34a;
+}
+
+.life-cost-summary strong {
+  display: block;
+  color: #14532d;
+  font-size: 24px;
+}
+
+.life-cost-summary span {
+  color: #166534;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.life-cost-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.life-cost-grid > div,
+.life-cost-preview {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  border: 1px solid #d8e3f0;
+  border-radius: 8px;
+  background: #f8fbff;
+  padding: 10px;
+}
+
+.life-cost-grid strong {
+  overflow: hidden;
+  color: #172033;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.life-cost-note {
+  margin: 0;
+  color: #526174;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.life-cost-preview p {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0;
+  color: #172033;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.life-bulk-confirm-copy {
+  margin: 0;
+  color: #526174;
+  line-height: 1.45;
+}
+
+.life-bulk-preview ul {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.life-bulk-preview li {
+  overflow: hidden;
+  color: #172033;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.life-bulk-preview small {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.life-cost-actions .button {
+  flex: 1 1 0;
+}
+
+@media (max-width: 1240px) {
+
+  .life-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: calc(100vh - 64px);
+    min-height: calc(100dvh - 64px);
+    overflow: visible;
+  }
+
+  .life-candidate-panel,
+  .life-layout .detail-panel {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .life-candidate-panel {
+    min-height: 0;
+  }
+
+  .life-candidate-panel .life-log-list {
+    grid-template-columns: 1fr;
+    max-height: min(520px, 60vh);
+    overflow: auto;
+  }
+
+}

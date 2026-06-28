@@ -1,0 +1,30 @@
+{
+  "name": "language-miner",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Compact public web build of Language Miner for GitHub Pages.",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b tsconfig.json && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "typecheck": "tsc -b tsconfig.json"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^4.2.0",
+    "lucide-react": "^0.468.0",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^4.10.38",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sql.js": "^1.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@types/sql.js": "^1.4.9",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7"
+  }
+}

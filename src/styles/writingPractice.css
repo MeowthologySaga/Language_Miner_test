@@ -1,0 +1,254 @@
+/* Writing Practice page layout and feedback states. */
+
+.writing-practice-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 14px;
+  min-height: calc(100vh - 92px);
+}
+
+.writing-practice-main,
+.writing-feedback-panel,
+.writing-practice-empty {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgb(15 23 42 / 5%);
+}
+
+.writing-practice-main {
+  display: grid;
+  grid-template-rows: auto auto auto auto minmax(0, 1fr);
+  align-content: start;
+  gap: 14px;
+  padding: 16px;
+}
+
+.writing-practice-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.writing-practice-header h2,
+.writing-feedback-panel h2 {
+  margin: 0;
+  color: #172033;
+  font-size: 19px;
+}
+
+.writing-practice-header p {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.writing-practice-stats {
+  display: flex;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.writing-practice-stats span,
+.writing-prompt-meta span {
+  border: 1px solid #dbeafe;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1769e0;
+  padding: 4px 9px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.writing-prompt-card {
+  display: grid;
+  gap: 12px;
+  border: 1px solid #cfe0ff;
+  border-radius: 8px;
+  background: #fbfdff;
+  padding: 18px;
+}
+
+.writing-prompt-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.writing-prompt-card p {
+  margin: 0;
+  color: #172033;
+  font-size: 26px;
+  font-weight: 760;
+  line-height: 1.45;
+}
+
+.writing-practice-controls,
+.writing-answer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.writing-practice-hint,
+.writing-feedback-panel section {
+  display: grid;
+  gap: 8px;
+  border: 1px solid #dbe4ee;
+  border-radius: 8px;
+  background: #fbfdff;
+  padding: 12px;
+}
+
+.writing-practice-hint h3,
+.writing-feedback-panel section h3 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  color: #334155;
+  font-size: 14px;
+}
+
+.writing-term-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.writing-term-row span {
+  border: 1px solid #d8e3f0;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #334155;
+  padding: 4px 9px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.writing-term-row span.matched {
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+  color: #166534;
+}
+
+.writing-term-row span.missing {
+  border-color: #fed7aa;
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.writing-answer-form {
+  display: grid;
+  gap: 10px;
+}
+
+.writing-answer-form textarea {
+  width: 100%;
+  min-height: 170px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #ffffff;
+  color: #172033;
+  outline: 0;
+  padding: 14px;
+  resize: vertical;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.writing-answer-form textarea:focus {
+  border-color: #9dc0ff;
+  box-shadow: 0 0 0 3px rgb(23 105 224 / 12%);
+}
+
+.writing-feedback-panel {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 16px;
+}
+
+.writing-score-card {
+  display: grid;
+  gap: 4px;
+  border: 1px solid #dbe4ee;
+  border-radius: 8px;
+  background: #f8fafc;
+  padding: 14px;
+}
+
+.writing-score-card strong {
+  color: #172033;
+  font-size: 42px;
+  line-height: 1;
+}
+
+.writing-score-card span {
+  color: #334155;
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.writing-score-card small {
+  color: #64748b;
+  line-height: 1.45;
+}
+
+.writing-score-card.great {
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+}
+
+.writing-score-card.good {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+}
+
+.writing-score-card.try_again {
+  border-color: #fed7aa;
+  background: #fff7ed;
+}
+
+.writing-feedback-panel section p,
+.writing-answer-suggestion p {
+  margin: 0;
+  color: #172033;
+  line-height: 1.58;
+  white-space: pre-wrap;
+}
+
+.writing-feedback-empty,
+.writing-practice-empty {
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  color: #64748b;
+  padding: 28px;
+  text-align: center;
+}
+
+.writing-practice-empty {
+  min-height: 360px;
+}
+
+.writing-feedback-empty strong,
+.writing-practice-empty strong {
+  color: #172033;
+}
+
+.writing-feedback-empty p,
+.writing-practice-empty p {
+  margin: 0;
+  max-width: 440px;
+  line-height: 1.5;
+}
+
+.writing-empty-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 6px;
+}
