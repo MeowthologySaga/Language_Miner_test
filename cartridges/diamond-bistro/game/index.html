@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diamond Bistro Cartridge</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="cartridge-shell">
+      <section class="bistro-board" aria-label="Diamond Bistro cartridge shell">
+        <div class="bistro-window">
+          <div class="bistro-awning">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="bistro-floor">
+            <div class="counter"></div>
+            <div class="table table-a">
+              <i></i>
+              <b></b>
+            </div>
+            <div class="table table-b">
+              <i></i>
+              <b></b>
+            </div>
+            <div class="staff"></div>
+            <div class="guest"></div>
+          </div>
+        </div>
+        <aside class="bistro-panel">
+          <span class="kicker">External Cartridge</span>
+          <h1>Diamond Bistro</h1>
+          <p>
+            This game is now loaded as a separate PlayZone cartridge. The main app only opens
+            this iframe host; it no longer imports the React/Three prototype.
+          </p>
+          <dl>
+            <div>
+              <dt>Cartridge</dt>
+              <dd id="cartridgeId">diamond-bistro</dd>
+            </div>
+            <div>
+              <dt>Wallet</dt>
+              <dd><span id="walletBalance">0</span> DP</dd>
+            </div>
+            <div>
+              <dt>Source</dt>
+              <dd>cartridges/diamond-bistro</dd>
+            </div>
+          </dl>
+        </aside>
+      </section>
+    </main>
+    <script src="./main.js"></script>
+  </body>
+</html>
